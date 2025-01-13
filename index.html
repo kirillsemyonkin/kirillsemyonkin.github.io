@@ -1,1 +1,222 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: #111;
+                font-family: 'Inter', sans-serif;
+                font-size: 12px;
+            }
 
+            a {
+                text-decoration: none;
+                color: initial;
+            }
+
+            .logo {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                user-select: none;
+                overflow: hidden;
+            }
+
+            .logo * {
+                position: absolute;
+                top: calc(50% - 50vmin);
+                left: calc(50% - 50vmin);
+                width: 100vmin;
+                height: 100vmin;
+            }
+
+            .logo :nth-child(1) {
+                filter: invert(76%) sepia(97%) saturate(462%) hue-rotate(76deg) brightness(96%) contrast(112%);
+            }
+            .logo :nth-child(2) {
+                filter: invert(9%) sepia(87%) saturate(7494%) hue-rotate(277deg) brightness(109%) contrast(118%);
+            }
+            .logo :nth-child(3) {
+                filter: invert(39%) sepia(70%) saturate(1570%) hue-rotate(187deg) brightness(100%) contrast(104%);
+            }
+            .logo :nth-child(4) {
+                filter: invert(41%) sepia(100%) saturate(7466%) hue-rotate(326deg) brightness(97%) contrast(110%);
+            }
+            .logo :nth-child(5) {
+                filter: invert() brightness(93%);
+            }
+
+            .socials {
+                background-color: #0007;
+                border-radius: 3em;
+                backdrop-filter: blur(3px);
+                position: absolute;
+                top: calc(70%);
+                left: calc(50%);
+                transform: translateX(-50%);
+            }
+
+            .links {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                gap: 0.5em;
+                height: 4.5em;
+            }
+
+            .white-bg {
+                display: grid;
+                border-radius: 3em;
+                background-color: #fff7;
+                padding: 2em;
+            }
+
+            .socials a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #fff7;
+                transition: all 250ms;
+                grid-row: 1;
+                border-radius: 1em;
+                width: 4em;
+                height: 4em;
+                border-bottom: 0px solid #bbb;
+                position: relative;
+                top: 0px;
+            }
+
+            .socials a img {
+                width: 60%;
+                transition: all 250ms;
+            }
+
+            .socials a:hover {
+                background-color: #fff;
+                top: -4px;
+                border-bottom-width: 5px;
+            }
+            .socials a:hover img {
+                filter: invert();
+            }
+            .links a:nth-child(1)>img {
+                position: absolute;
+                width: 3.6em;
+            }
+            .links a:nth-child(1) {
+                border-bottom-color: #d30;
+            }
+            .links a:nth-child(1):hover {
+                background-color: #f50;
+            }
+            .links a:nth-child(2) {
+                border-bottom-color: #0069dc;
+            }
+            .links a:nth-child(2):hover {
+                background-color: #208bfe;
+            }
+            .links a:nth-child(3) {
+                border-bottom-color: #0d4dc9;
+            }
+            .links a:nth-child(3):hover {
+                background-color: #1f6feb;
+            }
+            .links a:nth-child(4) {
+                border-bottom-color: #c02107;
+            }
+            .links a:nth-child(4):hover {
+                background-color: #e24329;
+            }
+            .links a:nth-child(5) {
+                border-bottom-color: #3643d0;
+            }
+            .links a:nth-child(5):hover {
+                background-color: #5865f2;
+            }
+
+            .mail {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 2.5em;
+            }
+
+            .mail a {
+                width: auto;
+                height: auto;
+                padding: 0.5em 1em;
+                border-radius: 0.75em;
+            }
+
+            .separator {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 3.25em;
+                width: 100%;
+            }
+
+            .separator * {
+                display: inline-block;
+                background-color: #fff7;
+                border-radius: 2em;
+                width: 1.25em;
+                height: 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="logo">
+            <img src="assets/ksktransparent.png">
+            <img src="assets/ksktransparent.png">
+            <img src="assets/ksktransparent.png">
+            <img src="assets/ksktransparent.png">
+            <img src="assets/ksktransparent.png">
+        </div>
+        <div class="socials">
+            <div class="white-bg">
+                <div class="links">
+                    <a href="https://soundcloud.com/cxxxxxxxx"><img src="assets/CXXX_Logo.svg"></a>
+                    <a href="https://bsky.app/profile/kirillsemyonkin.ru"><img src="assets/bluesky_media_kit_logo.svg"></a>
+                    <a href="https://github.com/kirillsemyonkin"><img src="assets/github-mark.svg"></a>
+                    <a href="https://gitlab.com/kirillsemyonkin"><img src="assets/gitlab-logo-600.svg"></a>
+                    <a href="https://discord.com/mMJDMt2gsw"><img src="assets/discord-mark-black.svg"></a>
+                </div>
+                <div class="separator"><div></div><div></div><div></div><div></div><div></div></div>
+                <div class="separator" style="height: 10px;"></div>
+                <div class="mail">
+                    <a href="mailto:burnytc@gmail.com">burnytc@gmail.com</a>
+                </div>
+                <div class="mail">
+                    <a href="mailto:kirillsemyonkin@vk.ru">kirillsemyonkin@vk.ru</a>
+                </div>
+            </div>
+        </div>
+        <script>
+            let imgs = document.querySelectorAll('.logo img');
+            let sz = Math.min(window.innerWidth, window.innerHeight);
+            
+            let mx = -1;
+            let my = 0;
+            let x = 0;
+            let y = 0;
+            let updateAll = () => {
+                x = x * 0.9 + mx * 0.1;
+                y = y * 0.9 + my * 0.1;
+                for (let i = 0; i < imgs.length; i++) {
+                    let amp = sz * 0.04 * (i - 2.5);
+                    let deg = x * 2;
+                    let img = imgs[i];
+                    img.style.transform = `skewX(${deg}deg) translate(${x * amp}px, ${y * amp}px)`;
+                }
+                requestAnimationFrame(updateAll);
+            };
+            requestAnimationFrame(updateAll);
+            
+            window.onpointermove = e => {
+                mx = e.clientX / window.innerWidth * 2 - 1;
+                my = e.clientY / window.innerHeight * 2 - 1;
+            };
+        </script>
+    </body>
+</html>
