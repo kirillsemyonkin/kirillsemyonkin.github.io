@@ -76,7 +76,7 @@
                 align-items: center;
                 justify-content: center;
                 background-color: #fff7;
-                transition: all 250ms;
+                transition: all 150ms;
                 grid-row: 1;
                 border-radius: 1em;
                 width: 4em;
@@ -88,7 +88,7 @@
 
             .socials a img {
                 width: 60%;
-                transition: all 250ms;
+                transition: all 150ms;
             }
 
             .socials a:hover {
@@ -195,24 +195,29 @@
         </div>
         <script>
             let imgs = document.querySelectorAll('.logo img');
-            let sz = Math.min(window.innerWidth, window.innerHeight);
             
             let mx = -1;
             let my = 0;
-            let x = 0;
-            let y = 0;
+            let positions = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
             let updateAll = () => {
-                x = x * 0.9 + mx * 0.1;
-                y = y * 0.9 + my * 0.1;
+                for (let i = 0; i < positions.length; i++) {
+                    let t = 0.05 + 0.01 * i;
+                    positions[i][0] = positions[i][0] * (1 - t) + mx * t;
+                    positions[i][1] = positions[i][1] * (1 - t) + my * t;
+                }
+
+                let sz = Math.min(window.innerWidth, window.innerHeight);
                 for (let i = 0; i < imgs.length; i++) {
-                    let amp = sz * 0.04 * (i - 2.5);
+                    let x = positions[i][0];
+                    let y = positions[i][1];
+                    let amp = sz * 0.05 * (i - 2.5);
                     let deg = x * 2;
                     let img = imgs[i];
                     img.style.transform = `skewX(${deg}deg) translate(${x * amp}px, ${y * amp}px)`;
                 }
                 requestAnimationFrame(updateAll);
             };
-            requestAnimationFrame(updateAll);
+            updateAll();
             
             window.onpointermove = e => {
                 mx = e.clientX / window.innerWidth * 2 - 1;
