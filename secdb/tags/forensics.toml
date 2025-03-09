@@ -1,0 +1,8 @@
+alt = "digital-forensics"
+
+title = "👮 Forensics"
+description = "Evidence recovery of systems being compromised"
+
+[ru]
+title = "👮 Форензика"
+description = "Поиск доказательств компрометации систем"

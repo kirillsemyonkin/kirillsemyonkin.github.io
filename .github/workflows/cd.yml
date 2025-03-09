@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CARGO_TERM_COLOR: always
+    steps:
+      - name: Download repo
+        uses: actions/checkout@v4
+
+      - name: Get GitHub Pages metadata
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Install Rust
+        run: rustup toolchain install stable --profile minimal --no-self-update
+
+      - name: Compile and cache build
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: engine -> engine/target
+
+      - name: Run release (generate `public`)
+        run: cargo run --release --manifest-path engine/Cargo.toml --target-dir engine/target
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

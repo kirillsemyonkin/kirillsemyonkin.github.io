@@ -1,0 +1,13 @@
+[package]
+name = "engine"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+comrak = "0.36.0"
+itertools = "0.14.0"
+toml = "0.8.20"
+implicit-clone = { version = "0.6.0", features = ["map", "serde"] }
+upon = "0.9.0"
+serde = { version = "1.0.218", features = ["derive"] }
+syntect = "5.2.0"

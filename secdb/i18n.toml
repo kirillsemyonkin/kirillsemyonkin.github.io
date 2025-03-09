@@ -1,0 +1,11 @@
+[all_tags]
+default = "All tags"
+ru = "Все теги"
+
+[no_tags]
+default = "No tags yet"
+ru = "Пока еще нет тэгов"
+
+[no_pages]
+default = "No pages for this tag yet"
+ru = "Пока еще нет страниц для этого тэга"

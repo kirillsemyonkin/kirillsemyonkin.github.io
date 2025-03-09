@@ -1,0 +1,8 @@
+alt = ["recon", "reconnaissance"]
+
+title = "🕵 OSINT (Reconnaissance)"
+description = "Information gathering via open sources"
+
+[ru]
+title = "🕵 OSINT"
+description = "Сбор информации посредством открытых источников"
