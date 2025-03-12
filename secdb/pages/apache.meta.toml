@@ -1,0 +1,8 @@
+tags = ["tools", "theory", "infrastructure", "web", "pentest"]
+
+title = "Apache Web Server"
+description = "Configuration and pentesting of the Apache2 HTTP server"
+
+[ru]
+title = "Веб-сервер Apache"
+description = "Настройка и тестирование на проникновение HTTP-сервера Apache2"

@@ -4,6 +4,7 @@ pub mod i18n;
 pub mod language;
 pub mod meta;
 pub mod page;
+pub mod render;
 pub mod tag;
 pub mod template;
 pub mod utils;
@@ -12,16 +13,20 @@ use std::fs;
 use std::io::Cursor;
 
 use comrak::plugins::syntect::SyntectAdapterBuilder;
+use comrak::ExtensionOptions;
 use comrak::Options;
 use comrak::Plugins;
 use comrak::RenderOptions;
 use comrak::RenderPlugins;
 use i18n::process_i18n;
+use implicit_clone::sync::IArray;
 use implicit_clone::sync::IString;
 use itertools::Itertools;
 use language::process_languages;
 use meta::process_metas;
 use page::process_pages;
+use render::my_render;
+use render::RenderCtx;
 use tag::process_tags;
 use template::process_templates;
 use template::Context;
@@ -73,6 +78,10 @@ fn run(src_dir_path: IPath, public_dir_path: IPath) {
 
     fs::create_dir_all(&public_dir_path).unwrap();
     let options = Options {
+        extension: ExtensionOptions {
+            header_ids: Some("".to_string()),
+            ..Default::default()
+        },
         render: RenderOptions {
             unsafe_: true,
             ..Default::default()
@@ -105,6 +114,12 @@ fn run(src_dir_path: IPath, public_dir_path: IPath) {
             .get(path_id.clone())
             .unwrap_or_else(|| panic!("missing page meta for page `{}`", path_id.display()));
         let path_id: IString = path_id.into_iter_lossy().join("/").into();
+
+        let available_languages = page_lang_path_map
+            .keys()
+            .map(|lang| lang.id.clone())
+            .collect::<IArray<_>>();
+
         for (lang, index_filepath) in page_lang_path_map.iter() {
             let info = meta.info(lang.clone());
             let context = Context {
@@ -119,7 +134,7 @@ fn run(src_dir_path: IPath, public_dir_path: IPath) {
                     path: path_id.clone(),
                     tags: meta.tags.iter().map(|tag| tag.id.clone()).collect(),
                     available_in_lang: true,
-                    languages: languages.iter_ids().cloned().collect(),
+                    languages: available_languages.clone(),
                 },
                 title: Some(info.title.clone()),
                 description: Some(info.description.clone()),
@@ -134,11 +149,18 @@ fn run(src_dir_path: IPath, public_dir_path: IPath) {
                 .join(&*path_id)
                 .join("index.html");
             fs::create_dir_all(path.parent().unwrap()).unwrap();
-            fs::write(
+            my_render(
                 path,
-                comrak::markdown_to_html_with_plugins(&content, &options, &plugins),
-            )
-            .unwrap();
+                content,
+                RenderCtx {
+                    lang: lang.clone(),
+                    i18ns: i18ns.clone(),
+                    metas: metas.clone(),
+                    pages: pages.clone(),
+                },
+                &options,
+                &plugins,
+            );
         }
     }
 
@@ -170,11 +192,18 @@ fn run(src_dir_path: IPath, public_dir_path: IPath) {
         let content = templates.render("layout".into(), context, Some(content));
         let path = public_dir_path.join(&*lang.id).join("tags/index.html");
         fs::create_dir_all(path.parent().unwrap()).unwrap();
-        fs::write(
+        my_render(
             path,
-            comrak::markdown_to_html_with_plugins(&content, &options, &plugins),
-        )
-        .unwrap();
+            content,
+            RenderCtx {
+                lang: lang.clone(),
+                i18ns: i18ns.clone(),
+                metas: metas.clone(),
+                pages: pages.clone(),
+            },
+            &options,
+            &plugins,
+        );
     }
 
     // write all tag pages
@@ -226,11 +255,18 @@ fn run(src_dir_path: IPath, public_dir_path: IPath) {
                 .join(&*tag_id)
                 .join("index.html");
             fs::create_dir_all(path.parent().unwrap()).unwrap();
-            fs::write(
+            my_render(
                 path,
-                comrak::markdown_to_html_with_plugins(&content, &options, &plugins),
-            )
-            .unwrap();
+                content,
+                RenderCtx {
+                    lang: lang.clone(),
+                    i18ns: i18ns.clone(),
+                    metas: metas.clone(),
+                    pages: pages.clone(),
+                },
+                &options,
+                &plugins,
+            );
         }
     }
 }

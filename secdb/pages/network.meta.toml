@@ -1,0 +1,8 @@
+tags = ["tools", "theory", "network", "infrastructure"]
+
+title = "Network setup"
+description = "Configuration of networking using the `ip` command and `/etc/network/interfaces` file"
+
+[ru]
+title = "Настройка сети"
+description = "Настройка сетевого соединения с помощью команды `ip` и файла `/etc/network/interfaces`"

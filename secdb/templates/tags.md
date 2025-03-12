@@ -1,5 +1,5 @@
 {% if tags %}
-<ul>
+<ul class="list">
 {% for tag in tags %}
 <a href="/secdb/{{ lang }}/tags/{{ tag }}">
 <li>{{ tag | tag_title: lang }}</li>

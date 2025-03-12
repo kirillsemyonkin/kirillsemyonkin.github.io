@@ -1,0 +1,8 @@
+tags = ["theory", "infrastructure"]
+
+title = "Basic Linux"
+description = "Common initial usage and settings on Linux systems"
+
+[ru]
+title = "Базовая настройка Linux"
+description = "Общие первоначальное использование и настройки на системах Linux"

@@ -2,8 +2,10 @@
 [![](https://img.shields.io/badge/Install%20on%20Arch%20via%20extra-black?logo=archlinux)](https://archlinux.org/packages/extra/x86_64/binwalk/)
 [![](https://img.shields.io/badge/Install%20with%20Cargo-black?logo=rust)](https://crates.io/crates/binwalk)
 
-Binwalk allows you to see the hidden embedded files in a file. It works by trying to detect files
-using their signatures and then trying to parse the detected formats at every position in a file.
+Binwalk allows you to see the hidden embedded files in a file. It works by trying to detect embedded
+files using their signatures and then trying to parse the detected formats at every position in the
+input file. You can think of it as a more powerful version of
+[the `file` command](file).
 
 Imagine a file that is comprised of a JPEG file and a GIF file.
 
@@ -35,9 +37,11 @@ The files will be put into the `extractions` directory:
 [#] Extraction of jpeg data at offset 0x0 declined
 [+] Extraction of gif data at offset 0x62D7 completed successfully
 ------------------------------------------------------------------
+```
 
+```tree
 extractions
-├── example.jpg.gif (symlink)
+├── example.jpg.gif -> ../example.jpg.gif
 └── example.jpg.gif.extracted
     └── 62D7
         └── image.gif

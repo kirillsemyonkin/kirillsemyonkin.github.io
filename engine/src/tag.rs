@@ -1,5 +1,6 @@
 use std::fs;
 use std::iter;
+use std::ops::Index;
 
 use implicit_clone::sync::IArray;
 use implicit_clone::sync::IMap;
@@ -11,6 +12,7 @@ use crate::language::LanguageStore;
 use crate::utils::iter_deep;
 use crate::utils::path_to_parts_and_first;
 use crate::utils::sync::path::IPath;
+use crate::utils::GetRef;
 use crate::utils::Info;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -85,6 +87,14 @@ impl TagStore {
 }
 
 impl ImplicitClone for TagStore {}
+
+impl Index<IString> for TagStore {
+    type Output = Tag;
+
+    fn index(&self, index: IString) -> &Self::Output {
+        self.tags.get_ref(&index).unwrap()
+    }
+}
 
 pub fn process_tags(tags_dir_path: IPath, languages: LanguageStore) -> TagStore {
     TagStore {

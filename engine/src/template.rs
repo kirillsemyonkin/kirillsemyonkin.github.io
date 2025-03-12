@@ -191,6 +191,7 @@ pub fn process_templates(
     });
     engine.add_filter("i18n", {
         let languages = languages.clone();
+        let i18n = i18n.clone();
         move |i18n_id: String, lang_id: String| {
             let i18n_id: IString = i18n_id.into();
             i18n.display(i18n_id.clone(), languages.get(lang_id.into()).unwrap())
@@ -220,29 +221,34 @@ pub fn process_templates(
                 .to_string()
         }
     });
-    engine.add_filter("subpaths", |path_id: String| {
-        let mut parts = path_id.split('/').collect_vec();
-        if parts.first() != Some(&"") {
-            parts.insert(0, "");
+    engine.add_filter("subpaths", {
+        let languages = languages.clone();
+        let i18n = i18n.clone();
+        move |path_id: String, lang_id: String| {
+            let lang = languages.get(lang_id.into()).unwrap();
+
+            let mut parts = path_id.split('/').collect_vec();
+            if parts.first() != Some(&"") {
+                parts.insert(0, "");
+            }
+
+            (0..parts.len())
+                .map(|i| {
+                    let name = match &parts[1..=i] {
+                        ["tags", tag_id] => tags[(*tag_id).into()].title(lang.clone()),
+                        ["tags"] => i18n
+                            .display("all_tags".into(), lang.clone())
+                            .unwrap()
+                            .clone(),
+                        page_id => metas[page_id.iter().collect()].title(lang.clone()),
+                    };
+                    upon::value! {
+                        path: parts[1..=i].join("/"),
+                        name: name,
+                    }
+                })
+                .collect_vec()
         }
-        (0..parts.len())
-            .map(|i| {
-                let name =
-                if parts.get(1) == Some(&"tags") {
-                    let tag = tags.get(parts[2].into()).unwrap();
-                    tags.get(tag_id.into())
-                        .unwrap()
-                        .title(languages.get(lang_id.into()).unwrap())
-                        .to_string()
-                } else {
-                    parts[i + 1].into()
-                };
-                upon::value! {
-                    path: parts[1..=i].join("/"),
-                    name: parts[i],
-                }
-            })
-            .collect_vec()
     });
 
     for path in iter_deep(template_dir.clone()) {

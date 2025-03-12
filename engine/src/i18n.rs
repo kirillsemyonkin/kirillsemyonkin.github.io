@@ -27,7 +27,7 @@ impl ImplicitClone for I18nStore {}
 
 impl I18nStore {
     pub fn display(&self, key: IString, lang: Language) -> Option<&IString> {
-        self.get(key.clone(), lang)
+        self.get(key, lang)
     }
 
     pub fn iter_ids(&self) -> impl Iterator<Item = &IString> + '_ {

@@ -1,4 +1,4 @@
-tags = ["tools", "pentest", "stego", "forensics"]
+tags = ["tools", "stego", "forensics"]
 
 title = "Binwalk"
 description = "Binary embedded file identifier"

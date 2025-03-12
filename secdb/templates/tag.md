@@ -1,5 +1,5 @@
 {% if pages %}
-<ul>
+<ul class="list">
 {% for page in pages %}
 {%- if page.available_in_lang -%}
 <a href="/secdb/{{ lang }}/{{ page.path }}">
