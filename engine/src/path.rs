@@ -9,7 +9,6 @@ use std::path::StripPrefixError;
 use implicit_clone::sync::IString;
 use implicit_clone::ImplicitClone;
 
-
 use crate::utils::ToArc;
 
 use super::Rc;
