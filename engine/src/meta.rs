@@ -13,7 +13,7 @@ use crate::tag::Tag;
 use crate::tag::TagStore;
 use crate::utils::all_path_ids;
 use crate::utils::all_possible_indices;
-use crate::utils::sync::path::IPath;
+use crate::sync::path::IPath;
 use crate::utils::GetRef;
 use crate::utils::Info;
 

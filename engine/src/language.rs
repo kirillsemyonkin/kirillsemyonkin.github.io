@@ -5,7 +5,7 @@ use implicit_clone::sync::IMapValues;
 use implicit_clone::sync::IString;
 use implicit_clone::ImplicitClone;
 
-use crate::utils::sync::path::IPath;
+use crate::sync::path::IPath;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Language {

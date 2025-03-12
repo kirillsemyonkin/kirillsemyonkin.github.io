@@ -8,7 +8,7 @@ use crate::language::LanguageStore;
 use crate::meta::MetaStore;
 use crate::utils::all_path_ids;
 use crate::utils::all_possible_indices;
-use crate::utils::sync::path::IPath;
+use crate::sync::path::IPath;
 
 #[derive(Debug, Clone)]
 pub struct PageStore {

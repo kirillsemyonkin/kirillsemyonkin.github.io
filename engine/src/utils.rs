@@ -11,8 +11,9 @@ use implicit_clone::ImplicitClone;
 use itertools::Itertools;
 use serde::Deserialize;
 use serde::Serialize;
-use sync::path::CollectIPath;
-use sync::path::IPath;
+
+use crate::sync::path::CollectIPath;
+use crate::sync::path::IPath;
 
 //
 // fs utils
@@ -165,24 +166,6 @@ impl<T: Serialize> From<Info<T>> for upon::Value {
             description: description
         }
     }
-}
-
-//
-// path
-//
-
-pub mod sync {
-    use std::sync::Arc as Rc;
-
-    #[path = "../../path.rs"]
-    pub mod path;
-}
-
-pub mod unsync {
-    use std::rc::Rc;
-
-    #[path = "../../path.rs"]
-    pub mod path;
 }
 
 //

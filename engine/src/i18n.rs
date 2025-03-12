@@ -7,7 +7,7 @@ use implicit_clone::ImplicitClone;
 
 use crate::language::Language;
 use crate::language::LanguageStore;
-use crate::utils::sync::path::IPath;
+use crate::sync::path::IPath;
 use crate::utils::GetRef;
 
 #[derive(Debug, Clone, PartialEq, Eq)]

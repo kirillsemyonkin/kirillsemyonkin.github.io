@@ -26,8 +26,8 @@ use crate::i18n::I18nStore;
 use crate::language::Language;
 use crate::meta::MetaStore;
 use crate::page::PageStore;
-use crate::utils::sync::path::IPath;
-use crate::utils::sync::path::ToIPath;
+use crate::sync::path::IPath;
+use crate::sync::path::ToIPath;
 
 #[derive(Debug, Clone)]
 pub struct RenderCtx {

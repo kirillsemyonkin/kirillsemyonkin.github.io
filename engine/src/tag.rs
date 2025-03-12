@@ -11,7 +11,7 @@ use crate::language::Language;
 use crate::language::LanguageStore;
 use crate::utils::iter_deep;
 use crate::utils::path_to_parts_and_first;
-use crate::utils::sync::path::IPath;
+use crate::sync::path::IPath;
 use crate::utils::GetRef;
 use crate::utils::Info;
 

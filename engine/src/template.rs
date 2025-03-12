@@ -19,8 +19,8 @@ use crate::tag::Tag;
 use crate::tag::TagStore;
 use crate::utils::iter_deep;
 use crate::utils::path_to_parts_and_first;
-use crate::utils::sync::path::IPath;
-use crate::utils::sync::path::ToIPath;
+use crate::sync::path::IPath;
+use crate::sync::path::ToIPath;
 
 pub struct TemplateStore {
     engine: upon::Engine<'static>,
