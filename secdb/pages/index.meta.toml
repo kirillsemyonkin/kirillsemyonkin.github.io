@@ -1,0 +1,7 @@
+tags = "meta"
+
+title = "SecDB"
+description = "Database of tools and common vulnerabilities"
+
+[ru]
+description = "База данных инструментов и частых уязвимостей"

@@ -1,0 +1,5 @@
+title = "🔓 PWN"
+description = "Low-level vulnerabilities providing control over systems"
+
+[ru]
+description = "Низкоуровневые уязвимости, предоставляющие контроль над системами"

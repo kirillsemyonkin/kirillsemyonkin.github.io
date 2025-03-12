@@ -1,0 +1,8 @@
+alt = "network"
+
+title = "📶 Networking"
+description = "Configuration and protection of networks"
+
+[ru]
+title = "📶 Сетевая связность"
+description = "Настройка и защита соединений"

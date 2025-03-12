@@ -1,0 +1,7 @@
+tags = ["tools", "stego", "forensics"]
+
+title = "file"
+description = "The file command"
+
+[ru]
+description = "Команда file"

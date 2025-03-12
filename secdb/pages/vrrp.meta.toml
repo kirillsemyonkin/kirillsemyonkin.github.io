@@ -1,0 +1,8 @@
+tags = ["tools", "theory", "network", "infrastructure"]
+
+title = "Virtual Router Redundancy Protocol (VRRP)"
+description = "Explanation for Virtual Router Redundancy Protocol (VRRP) and configuration"
+
+[ru]
+title = "Протокол резервирования виртуального маршрутизатора (VRRP)"
+description = "Объяснение Virtual Router Redundancy Protocol (VRRP) и конфигурация"

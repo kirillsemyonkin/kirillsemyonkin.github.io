@@ -1,0 +1,9 @@
+{
+    "MD033": false,
+    "MD041": false,
+    "MD045": false,
+    "line-length": {
+        "line_length": 100,
+        "stern": true
+    }
+}

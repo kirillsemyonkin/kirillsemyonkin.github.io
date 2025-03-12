@@ -1,0 +1,7 @@
+tags = ["tools", "stego", "forensics"]
+
+title = "Binwalk"
+description = "Binary embedded file identifier"
+
+[ru]
+description = "Идентификатор вложенных бинарных файлов"

@@ -1,0 +1,8 @@
+alt = "steganography"
+
+title = "🔎 Steganography"
+description = "Uncovering the messages hidden in seemingly inconspicuous media"
+
+[ru]
+title = "🔎 Стеганография"
+description = "Поиск скрытых сообщений в непримечательных медиа-данных"

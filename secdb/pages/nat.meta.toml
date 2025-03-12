@@ -1,0 +1,8 @@
+tags = ["tools", "theory", "network", "infrastructure"]
+
+title = "Network Address Translation (NAT)"
+description = "Explanation for NAT and configuration"
+
+[ru]
+title = "Перенаправление адресов (NAT)"
+description = "Объяснение Network Address Translation (NAT) и конфигурация"
